@@ -13,14 +13,9 @@ const  OpenAPIValidator  = require('express-openapi-validator').OpenApiValidator
 
 const schemaValidator = new Validator({ allErrors: true, verbose: true });
 
-const consul = require('consul')({ promisify: true });
-
 const express = require('express')
 
 const CitiesDB = require('./citiesdb');
-
-const serviceId = uuid().substring(0, 8);
-const serviceName = `zips-${serviceId}`
 
 //Load application keys
 //Rename _keys.json file to keys.json
@@ -47,12 +42,12 @@ app.use(express.urlencoded({ extended: true }));
 
 // Start of workshop
 
-// TODO 1/3 Load schemans
+// TODO 1/2 Load schemans
 
 
 
 
-// TODO 2/3 Copy your routes from workshop03 here
+// TODO 2/2 Copy your routes from workshop03 here
 
 
 
