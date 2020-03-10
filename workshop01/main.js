@@ -26,7 +26,7 @@ const makeInvocation = function(url) {
                     resolve(body);
                 }
             )
-        })
+        }) 
     );
 }
 
