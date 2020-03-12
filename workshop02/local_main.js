@@ -104,9 +104,9 @@ app.get('/api/state/:state/count',
 )
 
 // TODO GET /api/city/:name
-app.get('/api/city/:city',
+app.get('/api/city/:name',
 	(req, resp) => { //handler
-		const result = db.findCitiesByName(req.params.city);
+		const result = db.findCitiesByName(req.params.name);
 		//status code
 		resp.status(200)
 		//set Content-Type
