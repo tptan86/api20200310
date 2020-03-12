@@ -1,5 +1,6 @@
 const range = require('express-range')
 const compression = require('compression')
+const cors = require('cors') //load cors lib
 
 const express = require('express')
 
@@ -11,6 +12,7 @@ const db = CitiesDB(data);
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
