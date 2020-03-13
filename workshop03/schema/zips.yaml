@@ -23,6 +23,35 @@ components:
         "OR", "WA", "AK"
       ]
 
+    city-form:
+      type: object
+      required: [ "city", "pop", "lat", "lng", "state" ]
+      properties: 
+        city:
+          type: string
+          description: City name
+        pop:
+          type: number
+          description: City's population
+          minimum: 10
+        lat:
+          type: number
+          description: City's latitude
+        lng:
+          type: number
+          description: City's longtitude
+        state:
+          type: string
+          enum: [
+            "MA", "RI", "NH", "ME", "VT", "CT", "NY", "NJ",
+            "PA", "DE", "DC", "MD", "VA", "WV", "NC", "SC",
+            "GA", "FL", "AL", "TN", "MS", "KY", "OH", "IN",
+            "MI", "IA", "WI", "MN", "SD", "ND", "MT", "IL",
+            "MO", "KS", "NE", "LA", "AR", "OK", "TX", "CO",
+            "WY", "ID", "UT", "AZ", "NM", "NV", "CA", "HI",
+            "OR", "WA", "AK"
+          ]
+
     city:
       type: object
       properties: 
@@ -54,6 +83,7 @@ components:
           ]
 
 paths:
+
   /api/states:
     get:
       description: "Get a list of all the states"
@@ -97,3 +127,29 @@ paths:
                 type: array
                 items: 
                   $ref: "#/components/schemas/states"
+                  
+  /api/city: 
+    post:
+      description: "Add a new city"
+      operationId: addCity
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/city-form"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/city"
+      responses:
+        201:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required: [ "message" ]
+
